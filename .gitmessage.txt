@@ -1,0 +1,25 @@
+# <type>(<scope>): <subject>
+# 空行
+# <body>
+# 空行
+# Refs: <issue-number>
+
+# ---
+# ## Guidelines
+#
+# ### type
+# - feat 機能追加
+# - fix バグ修正
+# - docs ドキュメントのみの変更
+# - style コードの意味に影響しない変更 (整形など)
+# - refactor 挙動変更を伴わない変更
+# - test テスト関連の追加や修正
+# - chore 雑務 (依存の更新, ビルドタスクなど)
+#
+# ### scope
+# 修正や追加を行った箇所（e.g., api, db, ui, ci/cd ...）
+#
+# ## How to apply
+# ```bash
+# git config commit.template .gitmessage.txt
+# ```
