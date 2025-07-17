@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import { connection } from "next/server";
 import { fetchImage } from "./fetch-image";
 import { CatImage } from "./cat-image";
@@ -6,9 +6,10 @@ import { CatImage } from "./cat-image";
 export default async function Home() {
   await connection();
   const image = await fetchImage();
-  console.log("Home: 画像情報を取得しました", image);
+  // console.log("Home: 画像情報を取得しました", image);
   return <CatImage url={image.url} />;
 }
+/* eslint-disable max-len */
 // export default function Home() {
 //   return (
 //     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -110,3 +111,4 @@ export default async function Home() {
 //     </div>
 //   );
 // }
+/* eslint-enable */
