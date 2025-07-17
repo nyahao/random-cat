@@ -6,19 +6,17 @@ type Image = {
   url: string;
 };
 
-export async function fetchImage(): Promise<Image> {
-  const res = await fetch("https://api.thecatapi.com/v1/images/search", {
-    headers: { "x-api-key": CAT_API_KEY },
-  });
-  const images: unknown = await res.json();
-  console.log("fetchImage: 画像情報を取得しました", images);
-  if (!isImageArray(images)) {
-    throw new Error("取得したデータが正しくありません");
+function isImage(value: unknown): value is Image {
+  if (typeof value !== "object" || value === null) {
+    return false;
   }
-  if (!images[0]) {
-    throw new Error("取得したデータが空です");
+  if (!("url" in value)) {
+    return false;
   }
-  return images[0];
+  if (typeof (value as Image).url !== "string") {
+    return false;
+  }
+  return true;
 }
 
 function isImageArray(value: unknown): value is Image[] {
@@ -31,15 +29,17 @@ function isImageArray(value: unknown): value is Image[] {
   return true;
 }
 
-function isImage(value: unknown): value is Image {
-  if (typeof value !== "object" || value === null) {
-    return false;
+export async function fetchImage(): Promise<Image> {
+  const res = await fetch("https://api.thecatapi.com/v1/images/search", {
+    headers: { "x-api-key": CAT_API_KEY },
+  });
+  const images: unknown = await res.json();
+  // console.log("fetchImage: 画像情報を取得しました", images);
+  if (!isImageArray(images)) {
+    throw new Error("取得したデータが正しくありません");
   }
-  if (!("url" in value)) {
-    return false;
+  if (!images[0]) {
+    throw new Error("取得したデータが空です");
   }
-  if (typeof (value as Image).url !== "string") {
-    return false;
-  }
-  return true;
+  return images[0];
 }
