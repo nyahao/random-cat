@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "eslint": "eslint .",
-    "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "format": "prettier --write .",
+    "eslint": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "15.3.5",
@@ -30,6 +30,8 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "typescript": "^5.6"
